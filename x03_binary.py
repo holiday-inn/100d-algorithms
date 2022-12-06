@@ -6,22 +6,35 @@ converts it into a list.  Each element is equal to the power
 of 2 that corresponds to that place value
 """
 
+
 def toBinary(value):
-  '''
-  input: value (int)
-  return : list of values
-  '''
   
-  return None
+  lis = []
+  x = bin(value)
+  if value >255:
+    exit()
+  else:
+    x = x.replace("0b","")
+    for i in range(len(x)):
+      if x[i] == "1":
+        lis.append(1)
+      elif x[i] == "0":
+        lis.append(0)
+  lis.reverse()
+  while len(lis) != 8:
+    lis.append(0)
+  return lis
 
 def toDecimal(myList):
-  '''
-  input: list of values
-  return int
-  convert binary to decimal
-  '''
-  return None
-
+  x = 0
+  b=-1
+  for i in myList:
+    b+=1
+    if i == 1:
+      x += 2**b
+    else: pass
+  
+  return x
 def problem1():
   assert toBinary(0) == [0,0,0,0,0,0,0,0]
   assert toBinary(1) == [1,0,0,0,0,0,0,0]
@@ -43,3 +56,4 @@ def problem2():
 if __name__ == "__main__":
   problem1()
   problem2()
+  

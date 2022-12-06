@@ -7,15 +7,22 @@ extra: What is the shortest necklace number sequence that can be made?
 """
 
 def necklace(a,b):
-  """
-  inputs: 
-  a : int value [0..9]
-  b : int value [0..9]
-  
-  return
-  str necklace number
-  """
-  return None
+  stir = f"{a}{b}"
+  x = a
+  y = b
+  con = True
+  while(x!=a or y!=b) or con == True:
+    con = False
+    if y+x >=10:   
+      x = ((x+y)%10)+1
+      y = int(stir[-1])
+      stir += str(x)
+    else:
+      x = x+y
+      y = int(stir[-1])
+      stir += str(x)
+  stir += str(b)
+  return stir
 
 def main():
   assert necklace(9,4) == "94483257314595516742685494"
@@ -25,5 +32,3 @@ def main():
 
 if __name__ == "__main__":
   main()
-  
-  

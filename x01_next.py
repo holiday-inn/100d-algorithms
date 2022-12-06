@@ -10,12 +10,35 @@ Create a funtion that receives 2 input paramters, the curValue and the list Data
 Return the index of the next item to be used
 """
 
-def next(current , myList):
-  '''
-  determine the next item from the list. The list contains False/True Boolean values
-  that indicate whether the current item can be used
-  '''
-  return None
+
+
+
+def next(x , data):
+  lis = []
+  b = 0
+  top = None
+  for i in data:
+
+    if i == False:
+      b+=1
+      pass
+    elif i == True:
+      lis.append(b)
+      b+=1
+  for i in lis:
+    if max(lis) <= x:
+      top = lis[0]
+      break
+    elif i > x:
+      top = i
+      break
+    else:
+      top = None
+
+  return top
+  
+
+  
 
 def main():
   data = [False, True, True, False, True, False]
@@ -40,5 +63,7 @@ def main():
   
   
 
-if __name__ == "__main__:
+if __name__ == "__main__":
   main()
+  
+
